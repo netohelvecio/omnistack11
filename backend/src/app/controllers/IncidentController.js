@@ -41,7 +41,16 @@ class IncidentController {
     const { page = 1 } = req.query;
 
     const incidents = await connection('incidents')
+      .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
       .orderBy('created_at', 'desc')
+      .select(
+        'incidents.*',
+        'ongs.name',
+        'ongs.email',
+        'ongs.whatsapp',
+        'ongs.city',
+        'ongs.uf'
+      )
       .paginate(10, page, true);
 
     return res.json(incidents);
