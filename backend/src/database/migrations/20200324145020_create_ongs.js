@@ -4,8 +4,11 @@ exports.up = (knex) => {
     table.string('name').notNullable();
     table.string('email').notNullable();
     table.string('whatsapp').notNullable();
+    table.integer('cep', 8).notNullable();
     table.string('city').notNullable();
+    table.string('neighborhood').notNullable();
     table.string('uf', 2).notNullable();
+    table.timestamps(true, true);
   });
 };
 

@@ -5,6 +5,7 @@ exports.up = (knex) => {
     table.string('description').notNullable();
     table.string('value').notNullable();
     table.string('ong_id').notNullable();
+    table.timestamps(true, true);
 
     table.foreign('ong_id').references('id').inTable('ongs');
   });
