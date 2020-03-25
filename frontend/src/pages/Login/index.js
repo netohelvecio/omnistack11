@@ -21,7 +21,12 @@ export default function Login() {
         <Form ref={formRef}>
           <h1>Faça seu logon</h1>
 
-          <Input name="id" type="text" placeholder="Sua ID" />
+          <Input
+            name="id"
+            type="text"
+            placeholder="Sua ID"
+            style={{ height: 60 }}
+          />
 
           <button type="submit">Entrar</button>
 

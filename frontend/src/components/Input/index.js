@@ -3,7 +3,7 @@ import ReactInputMask from 'react-input-mask';
 
 import { useField } from '@unform/core';
 
-import { Container } from './styles';
+import './styles.css';
 
 export default function InputMask({ name, ...rest }) {
   const inputRef = useRef(null);
@@ -24,10 +24,10 @@ export default function InputMask({ name, ...rest }) {
   }, [fieldName, registerField]);
 
   return (
-    <Container>
+    <>
       <ReactInputMask ref={inputRef} defaultValue={defaultValue} {...rest} />
 
       {error && <span>{error}</span>}
-    </Container>
+    </>
   );
 }
