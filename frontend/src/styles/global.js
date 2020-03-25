@@ -18,14 +18,14 @@ export default createGlobalStyle`
   html, body, #root {
     height: 100%;
     width: 100%;
-    background: #7159c1;
+    background: #f0f0f5;
   }
 
   body {
     -webkit-font-smoothing: antialiased;
   }
 
-  body, input, button {
+  body, input, button, textarea {
     font: 14px 'Roboto', sans-serif;
   }
 
