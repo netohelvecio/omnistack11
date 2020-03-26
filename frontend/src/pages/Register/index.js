@@ -26,15 +26,19 @@ export default function Register() {
 
           <Link to="/">
             <FiArrowLeft size={16} color="#E02041" />
-            Não tenho cadastro
+            Voltar para login
           </Link>
         </section>
 
         <Form ref={formRef}>
-          <Input name="name" placeholder="Digite o nome da ONG" />
-          <Input name="email" placeholder="Digite seu e-mail" />
-          <Input name="whatsapp" placeholder="Digite o seu whatasapp" />
-          <Input name="cep" placeholder="Digite seu CEP" />
+          <Input name="name" type="text" placeholder="Digite o nome da ONG" />
+          <Input name="email" type="email" placeholder="Digite seu e-mail" />
+          <Input
+            name="whatsapp"
+            mask="(99) 99999-9999"
+            placeholder="Digite o seu whatasapp"
+          />
+          <Input name="cep" mask="99999-999" placeholder="Digite seu CEP" />
 
           <ContainerInput>
             <Input name="city" placeholder="Cidade" disabled />
