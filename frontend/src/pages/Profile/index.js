@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
@@ -13,6 +13,8 @@ import { Container, ContainerLoading, Paginacao } from './styles';
 import logo from '../../assets/logo.svg';
 
 export default function Profile() {
+  const history = useHistory();
+
   const ongName = localStorage.getItem('ongName');
   const ongId = localStorage.getItem('ongId');
 
@@ -53,6 +55,13 @@ export default function Profile() {
     handleIncidents();
   }, [page, ongId]);
 
+  function handleLogout() {
+    localStorage.setItem('ongName', null);
+    localStorage.setItem('ongId', null);
+
+    history.push('/');
+  }
+
   return (
     <Container>
       <header>
@@ -60,7 +69,7 @@ export default function Profile() {
         <span>Bem vindo(a), {ongName}</span>
 
         <Link to="/incidents/new">Cadastrar novo caso</Link>
-        <button type="button">
+        <button onClick={handleLogout} type="button">
           <FiPower size={18} color="#e02041" />
         </button>
       </header>
