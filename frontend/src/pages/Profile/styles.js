@@ -104,3 +104,49 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const ContainerLoading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 80px;
+
+  span {
+    font-size: 28px;
+    color: #e02041;
+    font-weight: bold;
+    margin-left: 25px;
+  }
+`;
+
+export const Paginacao = styled.div`
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+
+  span {
+    color: #666;
+    font-size: 16px;
+  }
+
+  button {
+    border-radius: 4px;
+    outline: 0;
+    border: 0;
+    background: #e02041;
+    color: #fff;
+    padding: 8px;
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      background: ${darken(0.05, '#e02041')};
+    }
+  }
+`;
