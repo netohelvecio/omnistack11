@@ -21,7 +21,7 @@ export default function Profile() {
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(null);
   const [incidents, setIncidents] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function handleIncidents() {
@@ -62,6 +62,26 @@ export default function Profile() {
     history.push('/');
   }
 
+  async function handleDelete(id) {
+    await api
+      .delete(`incidents/${id}`, {
+        headers: {
+          authorization: ongId,
+        },
+      })
+      .then(() => {
+        toast.success('Incidente delatado com sucesso!');
+
+        setIncidents(incidents.filter((incident) => incident.id !== id));
+      })
+      .catch((err) => {
+        toast.error(
+          err.response.data.error ||
+            'Erro ao deletar incidente, tente novamente!'
+        );
+      });
+  }
+
   return (
     <Container>
       <header>
@@ -94,7 +114,7 @@ export default function Profile() {
                 <strong>VALOR:</strong>
                 <p>{incident.valueFormatted}</p>
 
-                <button type="button">
+                <button onClick={() => handleDelete(incident.id)} type="button">
                   <FiTrash2 size={20} color="#a8a8b3" />
                 </button>
               </li>
