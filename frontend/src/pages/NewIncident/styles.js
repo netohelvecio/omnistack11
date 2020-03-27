@@ -61,10 +61,6 @@ export const Container = styled.div`
     flex: 1;
     max-width: 500px;
 
-    input {
-      margin-top: 8px;
-    }
-
     textarea {
       background: #fff;
       color: #333;
