@@ -7,6 +7,7 @@ input {
   width: 100%;
   padding: 0 24px;
   font-size: 18px;
+  margin-top: 8px;
 }
 
 input::placeholder {
@@ -20,4 +21,11 @@ input:hover {
 
 input:focus {
   border: 2px solid #2684ff;
+}
+
+span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #E02041;
+  margin-top: 5px;
 }

@@ -60,10 +60,6 @@ export const Container = styled.div`
     flex: 1;
     max-width: 500px;
 
-    input {
-      margin-top: 8px;
-    }
-
     button {
       background: #e02041;
       font-weight: bold;
@@ -90,9 +86,39 @@ export const Container = styled.div`
 export const ContainerInput = styled.div`
   display: flex;
 
-  input {
-    & + input {
+  > div {
+    & + div {
       margin-left: 8px;
+    }
+  }
+`;
+
+export const ContainerCep = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #dcdce6;
+  border-radius: 8px;
+  height: 50px;
+  width: ${(props) => (props.small ? '120px' : '100%')};
+  padding: 0 24px;
+  margin-top: 8px;
+
+  &:hover {
+    border: 1px solid #b6b6cb;
+  }
+
+  input {
+    border: 0;
+    border-radius: 0;
+    height: 44px;
+    width: 100%;
+    padding: 0;
+    margin-top: 0;
+
+    &:hover {
+      border: 0;
     }
   }
 `;
