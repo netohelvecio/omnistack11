@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Linking } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import * as MailComposer from 'expo-mail-composer';
 
 import {
@@ -22,9 +22,12 @@ import {
 import Logo from '../../assets/logo.png';
 
 export default function Detail() {
-  const message = `Olá APAD, estou entrando em contato pois gostaria de ajudar o caso "Cadelinha Atropelada" com a valor R$ 120,000`;
-
   const navigaton = useNavigation();
+  const route = useRoute();
+
+  const { incident } = route.params;
+
+  const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar o caso "${incident.title}" com a valor ${incident.valueFormatted}`;
 
   function navigationBack() {
     navigaton.goBack();
@@ -32,14 +35,16 @@ export default function Detail() {
 
   function sendMail() {
     MailComposer.composeAsync({
-      subject: 'Herói do caso: Cadelinha atropelada',
-      recipients: ['helvecioneto77@gmail.com'],
+      subject: `Herói do caso: ${incident.title}`,
+      recipients: [incident.email],
       body: message,
     });
   }
 
   function sendWhatsapp() {
-    Linking.openURL(`whatsapp://send?phone=5571993791501&text=${message}`);
+    Linking.openURL(
+      `whatsapp://send?phone=55${incident.whatsapp}&text=${message}`
+    );
   }
 
   return (
@@ -54,13 +59,15 @@ export default function Detail() {
 
       <ContainerIncident>
         <Property style={{ marginTop: 0 }}>ONG:</Property>
-        <Value>APAD</Value>
+        <Value>
+          {incident.name} de {incident.city}/{incident.uf}{' '}
+        </Value>
 
         <Property>Caso:</Property>
-        <Value>Cachorro perdido</Value>
+        <Value>{incident.description}</Value>
 
         <Property>Valor:</Property>
-        <Value>R$ 120,00</Value>
+        <Value>{incident.valueFormatted}</Value>
       </ContainerIncident>
 
       <ContainerContact>
